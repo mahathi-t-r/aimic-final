@@ -1,0 +1,179 @@
+<!DOCTYPE HTML>
+{% load static %}
+<html>
+	<head>
+		<title>Anirudh Ravichander</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'main.css' %}">
+		<noscript><link rel="stylesheet" href="{% static 'noscript.css' %}" /></noscript>
+
+		<style>
+        /* Banner CSS */
+        body.is-preload #banner .logo {
+            -moz-transform: none;
+            -webkit-transform: none;
+            -ms-transform: none;
+            transform: none;
+            opacity: 1;
+        }
+
+        body.is-preload #banner h2 {
+            opacity: 1;
+            -moz-transform: none;
+            -webkit-transform: none;
+            -ms-transform: none;
+            transform: none;
+            -moz-filter: none;
+            -webkit-filter: none;
+            -ms-filter: none;
+            filter: none;
+        }
+
+        body.is-preload #banner p {
+            opacity: 1; /* fixed typo here */
+            -moz-transform: none;
+            -webkit-transform: none;
+            -ms-transform: none;
+            transform: none;
+            -moz-filter: none;
+            -webkit-filter: none;
+            -ms-filter: none;
+            filter: none;
+        }
+
+			.profile-image {
+    float: right; /* Float the image to the right */
+    margin-left: 20px; /* Add some space between the image and text */
+}
+
+.profile-image img {
+    width: 150px; /* Set the width of the image */
+    height: auto; /* Maintain aspect ratio */
+}
+
+}
+
+
+
+    </style>
+
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+
+
+
+				<!-- Menu -->
+					<nav id="menu">
+    <div class="inner">
+        <h2>Menu</h2>
+        <ul class="links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/aboutus">About Us</a></li>
+            <li><a href="/search_tracks">Search</a></li>
+            <li><a href="/login">Log In</a></li>
+            <li><a href="/signup">Sign Up</a></li>
+        </ul>
+        <a href="#" class="close">Close</a>
+    </div>
+</nav>
+
+
+
+
+<!-- Header -->
+					<header id="header" class="alt">
+						<h1><a href="index.html">Aimic</a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+
+    <!-- Banner -->
+    <section id="banner">
+        <div class="inner">
+            <h2>TAYLOR SWIFT</h2>
+            <p>Taylor Swift is an iconic American singer-songwriter known for her heartfelt lyrics and captivating melodies that resonate with listeners worldwide.</p>
+        </div>
+    </section>
+
+    <!-- Wrapper -->
+    <section id="wrapper">
+
+        <!-- One -->
+        <section id="one" class="wrapper spotlight style1">
+            <div class="inner">
+                <a href="#" class="image"><img src="https://c.saavncdn.com/657/Love-Story-Taylor-s-Version--English-2021-20210212103906-500x500.jpg" alt="" /></a>
+                <div class="content">
+                    <h2 class="major">Love Story</h2>
+                    <p>"Love Story" is a timeless classic by Taylor Swift, known for its enchanting tale of forbidden love set against a backdrop of Romeo and Juliet.</p>
+                    <!-- Audio player -->
+                    <audio controls>
+                        <source src="{% static 'ls.mp3' %}" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+            </div>
+        </section>
+
+        <!-- Two -->
+        <section id="two" class="wrapper alt spotlight style2">
+            <div class="inner">
+                <a href="#" class="image"><img src="https://www.billboard.com/wp-content/uploads/2022/07/taylor-swift-blank-space-mv-still-2014-billboard-1548.jpg?w=942&h=623&crop=1" alt="" /></a>
+                <div class="content">
+                    <h2 class="major">Blank Space</h2>
+                    <p>"Blank Space" is a chart-topping hit by Taylor Swift, celebrated for its satirical take on media portrayal and Swift's signature catchy hooks.</p>
+                    <audio controls>
+                        <source src="{% static 'bs.mp3' %}" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+            </div>
+        </section>
+
+        <!-- Three -->
+        <section id="three" class="wrapper spotlight style3">
+            <div class="inner">
+                <a href="#" class="image"><img src="https://ucarecdn.com/a0352566-b3e1-4461-8782-32c063bf16ed/-/format/auto/-/preview/3000x3000/-/quality/lighter/" alt="" /></a>
+                <div class="content">
+                    <h2 class="major">Lover </h2>
+                    <p>Lover is a feel-good anthem by Taylor Swift, celebrated for its empowering message of self-acceptance and resilience in the face of criticism.</p>
+                    <audio controls>
+                        <source src="{% static 'lover.mp3' %}" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+            </div>
+        </section>
+
+        <section id="four" class="wrapper alt spotlight style2">
+            <div class="inner">
+                <a href="#" class="image"><img src="https://i.ytimg.com/vi/3tmd-ClpJxA/maxresdefault.jpg" alt="" /></a>
+                <div class="content">
+                    <h2 class="major">Look What You Made Me Do </h2>
+                    <p>Look What You Made Me Do is a fan-favorite by Taylor Swift, known for its relatable lyrics and infectious melody that resonate with listeners of all ages.</p>
+                    <audio controls>
+                        <source src="{% static 'look.mp3' %}" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- Scripts -->
+    <script src="{% static 'jquery.min.js' %}"></script>
+    <script src="{% static 'jquery.scrollex.min.js' %}"></script>
+    <script src="{% static 'browser.min.js' %}"></script>
+    <script src="{% static 'breakpoints.min.js' %}"></script>
+    <script src="{% static 'util.js' %}"></script>
+    <script src="{% static 'main.js' %}"></script>
+
+</div>
+</body>
+</html>

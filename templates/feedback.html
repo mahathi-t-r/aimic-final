@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+{% load static %}
+<html>
+<head>
+    <title>Feed Back</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <noscript><link rel="stylesheet" href="{% static 'noscript.css' %}" /></noscript>
+<style>
+#navbar {
+    background-color: #2d3141;
+    padding: 15px 20px;
+}
+
+#navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#navbar ul li {
+    display: inline;
+    margin-left: 20px;
+}
+
+#navbar ul li:first-child {
+    margin-left: 0;
+}
+
+#navbar ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+#navbar ul li a:hover {
+    color: #8EBBFF;
+}
+</style>
+</head>
+<body>
+    <!-- Navigation bar -->
+    <nav id="navbar">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/feedback">Feedback</a></li>
+            <li><a href="/premium">Premium</a></li>
+        </ul>
+    </nav>
+
+    <section id="footer">
+        <div class="inner">
+            <h2 class="major">Give Us Feedback</h2>
+            <p>We value your feedback to improve your experience on Aimic, the ultimate music streaming platform. Share your thoughts, suggestions, or report any issues you encounter. Your feedback helps us to enhance Aimic for all music lovers.</p>
+            {% if messages %}
+            {% for message in messages %}
+                <div class="{% if message.tags == 'error' %} message {% elif message.tags == 'success' %} success-message {% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+            <form method="post" action="#">
+                {% csrf_token %}
+                <div class="fields">
+                    <div class="field">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name" required>
+                    </div>
+                    <div class="field">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" required>
+                    </div>
+                    <div class="field">
+                        <label for="feedback_text">Feedback</label>
+                        <textarea name="feedback_text" id="feedback_text" rows="4"></textarea>
+                    </div>
+                </div>
+                <ul class="actions">
+                    <li><input type="submit" value="Send Message" /></li>
+                </ul>
+            </form>
+            <ul class="contact">
+                <li class="icon solid fa-home">
+                    The Aimic <br />
+                    K L University<br />
+                    Andhra Pradesh, India
+                </li>
+                <li class="icon solid fa-envelope"><a href="mailto:info@aimic.com">info@aimic.com</a></li>
+                <li class="icon brands fa-twitter"><a href="https://twitter.com/aimic">twitter.com/aimic</a></li>
+                <li class="icon brands fa-facebook-f"><a href="https://facebook.com/aimic">facebook.com/aimic</a></li>
+                <li class="icon brands fa-instagram"><a href="https://instagram.com/aimic">instagram.com/aimic</a></li>
+            </ul>
+            <ul class="copyright">
+                <li>&copy; Aimic . All rights reserved.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.scrollex.min.js' %}"></script>
+    <script src="{% static 'assets/js/browser.min.js' %}"></script>
+    <script src="{% static 'assets/js/breakpoints.min.js' %}"></script>
+    <script src="{% static 'assets/js/util.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+</body>
+</html>

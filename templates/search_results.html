@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: "Trirong", serif;
+            margin: 0;
+            padding: 0;
+            background-color: #0c0c0c;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center; /* Center align the content */
+        }
+
+        /* Search Results Styles */
+        .search-results {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjusted card width */
+            gap: 20px;
+        }
+
+        .track-card {
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            padding: 10px; /* Reduced padding */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .track-image {
+            width: 70%; /* Adjusted image width */
+            border-radius: 10px;
+            margin-bottom: 10px; /* Reduced margin */
+        }
+
+        .track-info {
+            text-align: center;
+        }
+
+        .track-title {
+            font-size: 1em; /* Reduced font size */
+            font-weight: 700;
+            margin-bottom: 3px; /* Reduced margin */
+        }
+
+        .track-details {
+            font-size: 0.8em; /* Reduced font size */
+            color: #ccc;
+        }
+
+        .control-buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px; /* Reduced margin */
+        }
+
+        .control-button {
+            background-color: transparent;
+            border: none;
+            font-size: 18px; /* Reduced font size */
+            color: #fff;
+            cursor: pointer;
+            transition: color 0.3s;
+            margin: 0 5px; /* Reduced margin */
+        }
+
+        .control-button:hover {
+            color: #ff6f61;
+        }
+
+        /* Hide audio controls */
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="heading">Your Search Results</h1>
+        <div class="search-results">
+            {% for track in tracks %}
+            <div class="track-card">
+                <img class="track-image" src="{{ track.album_artwork }}" alt="Album Artwork">
+                <div class="track-info">
+                    <div class="track-title">{{ track.name }}</div>
+                    <div class="track-details">By: {{ track.artists|join:", " }}</div>
+                    <div class="track-details">Album: {{ track.album }}</div>
+                </div>
+                <button class="control-button prev-button"><i class="fas fa-backward"></i></button>
+                <button class="control-button play-button" data-src="{{ track.preview_url }}"><i class="fas fa-play"></i></button>
+                <button class="control-button pause-button" style="display: none;"><i class="fas fa-pause"></i></button>
+                <button class="control-button next-button"><i class="fas fa-forward"></i></button>
+            </div>
+            {% empty %}
+            <div>No tracks found</div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const trackCards = document.querySelectorAll('.track-card');
+
+            trackCards.forEach(function(card) {
+                const playButton = card.querySelector('.play-button');
+                const pauseButton = card.querySelector('.pause-button');
+                const prevButton = card.querySelector('.prev-button');
+                const nextButton = card.querySelector('.next-button');
+                const audioSrc = playButton.getAttribute('data-src');
+                const audioElement = new Audio(audioSrc);
+
+                playButton.addEventListener('click', function() {
+                    audioElement.play();
+                    playButton.style.display = 'none';
+                    pauseButton.style.display = 'inline-block';
+                });
+
+                pauseButton.addEventListener('click', function() {
+                    audioElement.pause();
+                    playButton.style.display = 'inline-block';
+                    pauseButton.style.display = 'none';
+                });
+
+                prevButton.addEventListener('click', function() {
+                    // Add logic to play previous track
+                });
+
+                nextButton.addEventListener('click', function() {
+                    // Add logic to play next track
+                });
+            });
+        });
+    </script>
+</body>
+</html>

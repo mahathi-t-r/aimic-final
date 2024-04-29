@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Music List</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: "Trirong", serif;
+            background-color: #0c0c0c;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            color: #8ebbff; /* Changed to blue color */
+            text-align: center;
+            padding-top: 20px;
+            font-size: 32px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        nav {
+            background-color: #333; /* Dark background */
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px; /* Increase padding for better clickability */
+            transition: color 0.3s; /* Smooth transition */
+        }
+        nav ul li a:hover {
+            color: #8ebbff; /* Changed to blue color */
+        }
+        .music-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .music-item {
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+        .music-item h2 {
+            margin-top: 0;
+            color: #8ebbff; /* Changed to blue color */
+        }
+        .music-item p {
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+        .music-item img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .music-item audio {
+            width: 100%;
+            margin-top: 20px;
+        }
+        .button {
+            background-color: #8ebbff; /* Changed to blue color */
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #0033ff; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/aboutus">About</a></li>
+            <li><a href="/feedback">Contact</a></li>
+             <li><a href="/upgrade">Premium</a></li>
+
+        </ul>
+    </nav>
+    <h1>Music List</h1>
+    <div class="music-list">
+        {% for music in music_list %}
+        <div class="music-item">
+            <h2>{{ music.title }}</h2>
+            <p>Artist: {{ music.artist }}</p>
+            <img src="{{ music.image.url }}" alt="{{ music.title }} Image"><br>
+            <audio controls>
+                <source src="{{ music.mp3_file.url }}" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <a href="{{ music.mp3_file.url }}" download class="button">Download</a>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

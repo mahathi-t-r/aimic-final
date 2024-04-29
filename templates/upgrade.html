@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upgrade to Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-RlM5ZOrN7RlE3i6r+BiRih1StaZo6m7sMV4R8zyLMEr+JQ5EFS4TXkUv9x1O9bjE" crossorigin="anonymous">
+
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #111;
+            color: #fff;
+        }
+        header {
+            background-color: #222;
+            padding: 20px 0;
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        header nav ul li {
+            margin-right: 20px;
+        }
+        header nav ul li:last-child {
+            margin-right: 0;
+        }
+        main {
+            padding: 50px 0;
+        }
+        .premium {
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .premium h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 30px;
+            font-family: "Sofia", sans-serif;
+        }
+        .premium h2 {
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-family: 'Roboto', sans-serif;
+        }
+        .premium h3 {
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .premium p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        .premium ul {
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        .premium ul li {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        .premium input[type="text"],
+        .premium input[type="email"],
+        .premium input[type="tel"] {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.0em;
+            padding: 15px;
+            width: 50%;
+            border-radius: 10px;
+            border: 2px solid #fff;
+            margin-bottom: 10px;
+            background-color: transparent;
+            color: #fff;
+        }
+        .premium button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 9px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        footer {
+            background-color: #222;
+            padding: 20px 0;
+            text-align: center;
+        }
+        footer .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        footer .container div {
+            flex: 1;
+        }
+        footer p {
+            font-size: 0.8em;
+            color: #fff;
+            margin: 5px 0;
+        }
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 1.0em;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/02/Aimic-Photoroom.png-Photoroom.png" alt="Your Application Logo" style="height: 40px;">
+            <nav>
+                <ul>
+                    <li><a href="/" style="text-decoration: none; color: #fff;">Home</a></li>
+                    <li><a href="/search_tracks" style="text-decoration: none; color: #fff;">Browse</a></li>
+                    <li><a href="/music" style="text-decoration: none; color: #fff;">listen</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="premium">
+            <h1>Upgrade to Premium</h1>
+            <form action="{% url 'payment' %}" method="post">
+                {% csrf_token %}
+                <div>
+                    <h2>Benefits of Premium Subscription:</h2>
+                    <ul>
+                        <li>Ad-free listening experience</li>
+                        <li>High-quality audio streaming</li>
+                        <li>Access to exclusive content</li>
+                        <li>Offline listening mode</li>
+                    </ul>
+                </div>
+                <div>
+                    <div style="display: flex; justify-content: center; margin-bottom: 30px;">
+                        <div style="flex: 1; margin: 0 10px; padding: 20px; border: 2px solid #fff; border-radius: 10px;">
+                            <h3>Basic Plan</h3>
+                            <p>Rs.20/Month</p>
+                            <ul>
+                                <li>Ad-free streaming</li>
+                                <li>High-quality audio</li>
+                                <br>
+                                <br>
+                            </ul>
+                            <input type="radio" name="plan" value="20" onclick="setPlanAmount('20')" required> Select
+                        </div>
+                        <div style="flex: 1; margin: 0 10px; padding: 20px; border: 2px solid #fff; border-radius: 10px;">
+                            <h3>Premium Plan</h3>
+                            <p>Rs.50/Month</p>
+                            <ul>
+                                <li>Ad-free streaming</li>
+                                <li>High-quality audio</li>
+                                <li>Offline mode</li>
+                                <li>Access to exclusive content</li>
+                            </ul>
+                            <input type="radio" name="plan" value="50" onclick="setPlanAmount('50')" required> Select
+                        </div>
+                    </div>
+                    <div>
+                        <h2>Enter Your Details:</h2>
+                        <input type="text" name="name" placeholder="Your Name">
+                        <input type="email" name="email" placeholder="Your Email">
+                        <input type="tel" name="phone" placeholder="Your Mobile Number">
+                        <!-- Hidden input to store plan amount -->
+                        <input type="hidden" id="planAmount" name="planAmount">
+                    </div>
+                </div>
+                <button type="submit">Proceed to Payment</button>
+            </form>
+        </section>
+    </main>
+
+   <footer>
+    <div class="container">
+        <div>
+            <p>&copy; 2024 Aimic. All rights reserved.</p>
+            <p>Contact us: <a href="mailto:theaimic3@gmail.com">theaimic3@gmail.com</a></p>
+        </div>
+        <div>
+            <a href="#">Facebook</a>
+            <a href="#">Twitter</a>
+            <a href="#">Instagram</a>
+        </div>
+    </div>
+</footer>
+
+<!-- JavaScript to set plan amount -->
+<script>
+    function setPlanAmount(amount) {
+        document.getElementById('planAmount').value = amount;
+    }
+</script>
+
+</body>
+</html>

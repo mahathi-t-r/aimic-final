@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover a New Tollywood Gem</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: #333;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 40px;
+            width: auto;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar ul li {
+            display: inline;
+            margin-left: 20px;
+        }
+
+        .navbar ul li:first-child {
+            margin-left: 0;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: 'Lobster', cursive;
+            font-weight: 700;
+            color: #8EBBFF;
+        }
+
+        .song-details {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        audio {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        p {
+            margin: 0;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/aboutus">About</a></li>
+                <li><a href="/feedback">Contact</a></li>
+                <li><a href="/upgrade">Premium</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="container">
+        <h1>Discover a New Tollywood Gem</h1>
+        <div class="song-details">
+            {% if random_song %}
+                <img src="{{ random_song.album_artwork }}" alt="Album Artwork" width="300" height="300">
+                <p><strong>Title:</strong> {{ random_song.title }}</p>
+                <p><strong>Artist:</strong> {{ random_song.artist }}</p>
+                <p><strong>Album:</strong> {{ random_song.album }}</p>
+                <p><strong>Release Date:</strong> {{ random_song.release_date }}</p>
+                {% if random_song.preview_url %}
+                    <audio controls>
+                        <source src="{{ random_song.preview_url }}" type="audio/mp3">
+                        Your browser does not support the audio element.
+                    </audio>
+                {% endif %}
+            {% else %}
+                <p>No random song found.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

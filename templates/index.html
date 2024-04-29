@@ -1,0 +1,282 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Streaming Service</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+</head>
+<body style="margin:0; padding:0; background:#121212; font-family:Arial, sans-serif; color:#fff;">
+    <div class="sidebar">
+        <!-- Spotify Logo -->
+        <div class="logo-container">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/02/Aimic-Photoroom.png-Photoroom.png" alt="Spotify Logo" style="width: 100%; height: auto; padding: 20px; box-sizing: border-box;">
+        </div>
+
+        <!-- Welcome User -->
+        <div class="sidebar-section">
+    <span style="margin-left: 14px;" class="sidebar-link-icon">👤</span>
+    <b>Welcome, <span style="display: inline-block;">{{user.username}}</span></b>
+            <br>
+            <br>
+
+            <a href="/logout">
+                <span class="sidebar-link-icon">↪️</span>
+                <b>Logout</b>
+            </a>
+        </div>
+
+        <!-- Top section of the sidebar -->
+        <div class="sidebar-section">
+            <a href="/aboutus" class="sidebar-link active">
+                <span class="sidebar-link-icon">🏠</span>
+                About us
+            </a>
+            <a href="/search_tracks" class="sidebar-link">
+                <span class="sidebar-link-icon">🔍</span>
+                Search
+            </a>
+           <a href="/random" class="sidebar-link">
+                <span class="sidebar-link-icon">🕵️‍♂️</span>
+                discover
+            </a>
+            <a href="/feedback" class="sidebar-link active">
+                <span class="sidebar-link-icon">💜</span>
+                <span class="sidebar-link-text">Rate Us</span>
+            </a>
+
+        </div>
+
+
+        <div class="sidebar-section">
+
+            <!-- Repeat f -->
+            <a href="/download-lyrics" class="sidebar-link">
+                <span class="sidebar-link-icon">🎶</span>
+                <span class="sidebar-link-text"> Lyrics</span>
+            </a>
+            <a href="/music" class="sidebar-link">
+                <span class="sidebar-link-icon">👤</span>
+                <span class="sidebar-link-text">Listen to Local</span>
+            </a>
+
+            <a href="/upgrade" class="sidebar-link">
+                <span class="sidebar-link-icon">👑</span>
+                <span class="sidebar-link-text">Premium</span>
+            </a>
+
+            <a href="/team" class="sidebar-link">
+                <span class="sidebar-link-icon">👥</span>
+                <span class="sidebar-link-text">meet the team</span>
+            </a>
+
+        </div>
+    </div>
+
+    <div style="margin-left:240px; padding:20px;">
+        <header class="header-container">
+            <br>
+            <div class="search-title">Top Artists</div>
+        </header>
+
+
+        <main style="padding-top:20px;">
+            <section style=" margin-top:0px; padding:0px; overflow-x:auto; white-space:nowrap;">
+                <!-- Artist Card -->
+                <a href="/sid_sriram">
+    <div class="artist-card">
+        <img src="https://static.toiimg.com/photo/75807234.cms" alt="Sid" style="width:150px; height:150px; border-radius:50%;">
+        <div class="artist-info">
+            <div class="artist-name">Sid Sriram</div>
+            <div class="artist-title">Artist</div>
+        </div>
+    </div>
+</a>
+
+<a href="/taylor">
+    <div class="artist-card">
+        <img src="https://www.billboard.com/wp-content/uploads/media/taylor-swift-press-wim-2019-cr-Valheria-Roche-billboard-1548.jpg?w=942&h=623&crop=1" alt="Taylor Swift" style="width:150px; height:150px; border-radius:50%;">
+        <div class="artist-info">
+            <div class="artist-name">Taylor Swift</div>
+            <div class="artist-title">Artist</div>
+        </div>
+    </div>
+</a>
+
+<a href="/dsp">
+    <div class="artist-card">
+        <img src="https://cdn.telanganatoday.com/wp-content/uploads/2022/11/DSP-aims-to-bring-back-live-music-in-songs-on-the-forefront-of-Bollywood-music-with-his-new-track.jpg" alt="The Weeknd" style="width:150px; height:150px; border-radius:50%;">
+        <div class="artist-info">
+            <div class="artist-name">Devi Sri Prasad</div>
+            <div class="artist-title">Artist</div>
+        </div>
+    </div>
+</a>
+
+<a href="/anirudh">
+    <div class="artist-card">
+        <img src="https://www.cinejosh.com/newsimg/newsmainimg/anirudh-ravichander-on-jawan_b_1503230438.jpg" alt="Anirudh" style="width:150px; height:150px; border-radius:50%;">
+        <div class="artist-info">
+            <div class="artist-name">Anirudh</div>
+            <div class="artist-title">Artist</div>
+        </div>
+    </div>
+</a>
+
+<a href="/anuvjain">
+    <div class="artist-card">
+        <img src="https://ubcitybangalore.in/wp-content/uploads/2021/12/9.jpg" alt="Anuv Jain" style="width:150px; height:150px; border-radius:50%;">
+        <div class="artist-info">
+            <div class="artist-name">Anuv jain</div>
+            <div class="artist-title">Artist</div>
+        </div>
+</div>
+</a>
+
+<a href="/shreyagoshal">
+    <div class="artist-card">
+        <img src="https://www.portland5.com/sites/default/files/styles/event_square_large/public/events/2023/06/09/ShreyaGhosal-438x400.jpg?itok=tWXMgrY5" alt="Shreya Ghoshal" style="width:150px; height:150px; border-radius:50%;">
+        <div class="artist-info">
+            <div class="artist-name">Shreya Ghoshal</div>
+            <div class="artist-title">Artist</div>
+        </div>
+    </div>
+</a>
+
+<!--<a href="https://open.spotify.com/artist/0TnOYISbd1XYRBk9myaseg">
+    <div class="artist-card">
+        <img src="data:image/jpeg;base64,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">
+        <div class="artist-info">
+            <div class="artist-name">Billie Eilish</div>
+            <div class="artist-title">Artist</div>
+        </div>
+    </div>
+</a>
+-->
+                <!-- Add more content cards here -->
+            </section>
+            <!-- Repeat sections for other categories with more content cards -->
+          
+          <!-- "Browse All" Section Title -->
+          <div class="browse-all-title">Browse all</div>
+
+          <!-- "Browse All" Section Content -->
+          
+
+          <div class="browse-all">
+            <!-- Category Card -->
+              <a href="/kids">
+            <div class="category-card">
+                <img src="https://media.istockphoto.com/id/1207123489/photo/young-girl-with-headphones-at-home.jpg?s=612x612&w=0&k=20&c=_PPmxSp5MBfgocADdcGZXDgutyXKRRMAUH9JIvQjUhI=" alt="Podcasts">
+                <div class="category-title">Kids</div>
+            </div>
+              </a>
+
+              <a href="/bollywood">
+            <div class="category-card">
+              <img src="https://img.wynk.in/unsafe/248x248/filters:no_upscale():strip_exif():format(webp)/http://s3.ap-south-1.amazonaws.com/discovery-prod-arsenal/arsenal/artworks/661799550aa4eb73b652fcfe/COLLECTION_102093600229705.png" alt="Podcasts">
+              <div class="category-title">Bollywood</div>
+            </div>
+              </a>
+
+              <a href ="/tollywood">
+            <div class="category-card">
+              <img src="https://img.wynk.in/unsafe/248x248/filters:no_upscale():strip_exif():format(webp)/http://s3.ap-south-1.amazonaws.com/discovery-prod-arsenal/arsenal/artworks/65a906d365fec05fe13039a1/COLLECTION_808008812876765.png" alt="Podcasts">
+              <div class="category-title">Tollywood</div>
+            </div>
+              </a>
+
+            <div class="category-card">
+              <img src="https://t.scdn.co/images/ea364e99656e46a096ea1df50f581efe" alt="Podcasts">
+              <div class="category-title">Made For You</div>
+            </div>
+
+            <div class="category-card">
+              <img src="https://i.scdn.co/image/ab67706f000000027ea4d505212b9de1f72c5112" alt="Podcasts">
+              <div class="category-title">New Releases</div>
+            </div>
+
+            <div class="category-card">
+              <img src="https://i.scdn.co/image/ab67fb8200005caf585ad0e83caae5047865f7a4" alt="Podcasts">
+              <div class="category-title">2023 in Music</div>
+            </div>
+            <!-- Repeat for each category -->
+            <!-- ... other categories ... -->
+        </div>
+
+        <div class="browse-all">
+            <!-- Category Card -->
+            <div class="category-card">
+                <img src="https://i.scdn.co/image/ab67fb8200008e2cea38d17f2e1a1630287f4328" alt="Podcasts">
+                <div class="category-title">2023 in podcasts</div>
+            </div>
+
+            <div class="category-card">
+              <img src="https://i.scdn.co/image/ab6761700000c52c87ab6b4a0c51593853fe2157" alt="Podcasts">
+              <div class="category-title">Merch</div>
+            </div>
+
+            <div class="category-card">
+              <img src="https://i.scdn.co/image/ab67fb8200008e2c64adf130003faa51378e3d2b" alt="Podcasts">
+              <div class="category-title">Happy Christmas</div>
+            </div>
+
+            <div class="category-card">
+              <img src="https://i.scdn.co/image/ab67fb8200005cafa862ab80dd85682b37c4e768" alt="Podcasts">
+              <div class="category-title">Pop</div>
+            </div>
+
+            <div class="category-card">
+              <img src="https://i.scdn.co/image/ab67fb8200005caf271f9d895003c5f5561c1354" alt="Podcasts">
+              <div class="category-title">Mood</div>
+            </div>
+
+            <div class="category-card">
+              <img src="https://i.scdn.co/image/ab67fb8200005caf9e3dea60be755ccd97b7351f" alt="Podcasts">
+              <div class="category-title">Hip-Hop</div>
+            </div>
+            <!-- Repeat for each category -->
+            <!-- ... other categories ... -->
+        </div>
+
+        <div class="browse-all">
+            <!-- Category Card -->
+            <div class="category-card">
+                <img src="https://t.scdn.co/images/7262179db37c498480ef06bfacb60310.jpeg" alt="Podcasts">
+                <div class="category-title">Podcast Charts</div>
+            </div>
+
+            <div class="category-card">
+              <img src="https://t.scdn.co/images/209c867f5bb34076b0dcc9deeb1868e6" alt="Podcasts">
+              <div class="category-title">Podcast New Releases</div>
+            </div>
+
+            <div class="category-card">
+              <img src="https://i.scdn.co/image/9af79fd06e34dea3cd27c4e1cd6ec7343ce20af4" alt="Podcasts">
+              <div class="category-title">Video Podcasts</div>
+            </div>
+
+            <div class="category-card">
+              <img src="https://i.scdn.co/image/ab67fb8200005caf3a75eafe6ba383e4152e6938" alt="Podcasts">
+              <div class="category-title">Fiction & Literature</div>
+            </div>
+
+            <div class="category-card">
+              <img src="https://charts-images.scdn.co/assets/locale_en/regional/weekly/region_global_default.jpg" alt="Podcasts">
+              <div class="category-title">Charts</div>
+            </div>
+
+            <div class="category-card">
+              <img src="https://i.scdn.co/image/ab67706f000000029249b35f23fb596b6f006a15" alt="Podcasts">
+              <div class="category-title">Workout</div>
+            </div>
+            <!-- Repeat for each category -->
+            <!-- ... other categories ... -->
+        </div>
+
+        </main>
+
+    </div>
+    
+</body>
+</html>

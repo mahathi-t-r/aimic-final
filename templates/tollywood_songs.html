@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: "Trirong", serif;
+            margin: 0;
+            padding: 0;
+            background-color: #0c0c0c;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center; /* Center align the content */
+        }
+
+        /* Search Results Styles */
+        .search-results {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjusted card width */
+            gap: 20px;
+        }
+
+        .track-card {
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            padding: 10px; /* Reduced padding */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .track-image {
+            width: 70%; /* Adjusted image width */
+            border-radius: 10px;
+            margin-bottom: 10px; /* Reduced margin */
+        }
+
+        .track-info {
+            text-align: center;
+        }
+
+        .track-title {
+            font-size: 1em; /* Reduced font size */
+            font-weight: 700;
+            margin-bottom: 3px; /* Reduced margin */
+        }
+
+        .track-details {
+            font-size: 0.8em; /* Reduced font size */
+            color: #ccc;
+        }
+
+        .control-buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px; /* Reduced margin */
+        }
+
+        .control-button {
+            background-color: transparent;
+            border: none;
+            font-size: 18px; /* Reduced font size */
+            color: #fff;
+            cursor: pointer;
+            transition: color 0.3s;
+            margin: 0 5px; /* Reduced margin */
+        }
+
+        .control-button:hover {
+            color: #ff6f61;
+        }
+
+        /* Hide audio controls */
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Discover Tollywood Music</h1>
+        <p>Experience the magic of Tollywood music, where soulful melodies and vibrant rhythms come together to create unforgettable tunes that touch the heart and lift the spirit. Dive into our curated collection of Tollywood songs below and immerse yourself in the rich musical heritage of Indian cinema.</p>
+        <ul class="search-results">
+            {% for song in tollywood_songs %}
+                <li class="track-card">
+                    <div class="song-info">
+                        <img class="track-image" src="{{ song.album_artwork }}" alt="{{ song.name }}">
+                        <div class="details">
+                            <h2 class="track-title">{{ song.name }}</h2>
+                            <p class="artists">Artists: {{ song.artists|join:", " }}</p>
+                            <p>Album: {{ song.album }}</p>
+                        </div>
+                    </div>
+                    <audio controls id="audio{{ forloop.counter }}">
+                        <source src="{{ song.preview_url }}" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <div class="control-buttons">
+                        <button class="control-button" onclick="prevSong({{ forloop.counter }})"><i class="fas fa-backward"></i></button>
+                        <button class="control-button play-pause-button" id="playButton{{ forloop.counter }}" onclick="toggleAudio({{ forloop.counter }})"><i class="fas fa-play"></i></button>
+                        <button class="control-button" onclick="nextSong({{ forloop.counter }})"><i class="fas fa-forward"></i></button>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <script>
+        var currentAudio = null;
+
+function toggleAudio(index) {
+    var audio = document.getElementById("audio" + index);
+    var playButton = document.querySelector("#playButton" + index + " i");
+    if (audio.paused) {
+        if (currentAudio && currentAudio !== audio) {
+            currentAudio.pause(); // Pause the currently playing audio
+            var currentPlayButton = document.querySelector("#playButton" + currentAudio.id.slice(5) + " i");
+            currentPlayButton.classList.remove('fa-pause');
+            currentPlayButton.classList.add('fa-play'); // Change previous play icon
+        }
+        audio.play();
+        playButton.classList.remove('fa-play');
+        playButton.classList.add('fa-pause'); // Change play icon to pause
+        currentAudio = audio; // Set the current audio to the one being played
+    } else {
+        audio.pause();
+        playButton.classList.remove('fa-pause');
+        playButton.classList.add('fa-play'); // Change pause icon to play
+        currentAudio = null; // Reset the current audio if paused
+    }
+}
+
+function prevSong(index) {
+    var prevIndex = index - 1;
+    var prevAudio = document.getElementById("audio" + prevIndex);
+    if (prevAudio) {
+        currentAudio.pause(); // Pause the currently playing audio
+        var playButton = document.querySelector("#playButton" + index + " i");
+        playButton.classList.remove('fa-pause');
+        playButton.classList.add('fa-play'); // Change play icon to pause for current audio
+        prevAudio.play(); // Play the previous audio
+        currentAudio = prevAudio; // Set the current audio to the previous one being played
+        var prevPlayButton = document.querySelector("#playButton" + prevIndex + " i");
+        prevPlayButton.classList.remove('fa-play');
+        prevPlayButton.classList.add('fa-pause'); // Change play icon to pause for previous audio
+    }
+}
+
+function nextSong(index) {
+    var nextIndex = index + 1;
+    var nextAudio = document.getElementById("audio" + nextIndex);
+    if (nextAudio) {
+        currentAudio.pause(); // Pause the currently playing audio
+        var playButton = document.querySelector("#playButton" + index + " i");
+        playButton.classList.remove('fa-pause');
+        playButton.classList.add('fa-play'); // Change play icon to pause for current audio
+        nextAudio.play(); // Play the next audio
+        currentAudio = nextAudio; // Set the current audio to the next one being played
+        var nextPlayButton = document.querySelector("#playButton" + nextIndex + " i");
+        nextPlayButton.classList.remove('fa-play');
+        nextPlayButton.classList.add('fa-pause'); // Change play icon to pause for next audio
+    }
+}
+
+    </script>
+</body>
+</html>

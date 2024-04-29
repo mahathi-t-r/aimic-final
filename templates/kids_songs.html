@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids Songs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #FCE7C0; /* Pale Peach */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #FF6F61; /* Coral Pink */
+            font-size: 32px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .search-results {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .track-card {
+            background-color: #FFF7E0; /* Light Apricot */
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out;
+            position: relative;
+        }
+
+        .track-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .song-info {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .song-info img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 20px;
+            border: 4px solid #FF6F61; /* Coral Pink */
+            animation: bounce 1.5s infinite alternate; /* Bouncing animation */
+        }
+
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
+        }
+
+        .details {
+            flex-grow: 1;
+        }
+
+        h2 {
+            color: #FF6F61; /* Coral Pink */
+            font-size: 24px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            margin-top: 0;
+        }
+
+        p {
+            color: #333; /* Black */
+            margin: 5px 0;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        audio {
+            width: 100%;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .control-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .control-button {
+            background-color: transparent;
+            border: none;
+            font-size: 20px;
+            color: #FF6F61; /* Coral Pink */
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .control-button:hover {
+            color: #333; /* Black */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎶 Kids Songs 🎶</h1>
+        <div class="search-results">
+            {% for song in kids_songs %}
+                <div class="track-card">
+                    <div class="song-info">
+                        <img src="{{ song.album_artwork }}" alt="{{ song.name }}">
+                        <div class="details">
+                            <h2>{{ song.name }}</h2>
+                            <p>Artists: {{ song.artists|join:", " }}</p>
+                            <p>Album: {{ song.album }}</p>
+                        </div>
+                    </div>
+                    <audio id="audio{{ forloop.counter }}" controls>
+                        <source src="{{ song.preview_url }}" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <div class="control-buttons">
+                        <button class="control-button" onclick="prevSong({{ forloop.counter }})"><i class="fas fa-backward"></i></button>
+                        <button id="playButton{{ forloop.counter }}" class="control-button" onclick="toggleAudio({{ forloop.counter }})"><i class="fas fa-play"></i></button>
+                        <button class="control-button" onclick="nextSong({{ forloop.counter }})"><i class="fas fa-forward"></i></button>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script>
+        var currentAudio = null;
+
+        function toggleAudio(index) {
+            var audio = document.getElementById("audio" + index);
+            var playButton = document.getElementById("playButton" + index);
+            if (audio.paused) {
+                if (currentAudio && currentAudio !== audio) {
+                    currentAudio.pause(); // Pause the currently playing audio
+                    var currentPlayButton = document.getElementById("playButton" + currentAudio.id.slice(5));
+                    currentPlayButton.innerHTML = '<i class="fas fa-play"></i>'; // Change previous play icon
+                }
+                audio.play();
+                playButton.innerHTML = '<i class="fas fa-pause"></i>'; // Change play icon to pause
+                currentAudio = audio; // Set the current audio to the one being played
+            } else {
+                audio.pause();
+                playButton.innerHTML = '<i class="fas fa-play"></i>'; // Change pause icon to play
+                currentAudio = null; // Reset the current audio if paused
+            }
+        }
+
+        function prevSong(index) {
+            // Implement logic to play previous song if available
+        }
+
+        function nextSong(index) {
+            var currentAudio = document.getElementById("audio" + index);
+            var nextIndex = index + 1;
+            var nextAudio = document.getElementById("audio" + nextIndex);
+            if (nextAudio) {
+                currentAudio.pause(); // Pause the currently playing audio
+                var playButton = document.getElementById("playButton" + index);
+                playButton.innerHTML = '<i class="fas fa-play"></i>'; // Change play icon to pause for current audio
+                nextAudio.play(); // Play the next audio
+                currentAudio = nextAudio; // Set the current audio to the next one being played
+                var nextPlayButton = document.getElementById("playButton" + nextIndex);
+                nextPlayButton.innerHTML = '<i class="fas fa-pause"></i>'; // Change play icon to pause for next audio
+            }
+        }
+    </script>
+</body>
+</html>

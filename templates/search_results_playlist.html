@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>Search Results</h1>
+    <ul>
+        {% for track in search_results %}
+            <li>{{ track.name }} <button class="add-to-playlist" data-track-id="{{ track.id }}">Add to Playlist</button></li>
+        {% endfor %}
+    </ul>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      <script>
+    $(document).ready(function() {
+        $('.add-to-playlist').click(function() {
+            var trackId = $(this).data('track-id');
+            $.ajax({
+                url: '/add_to_playlist/{{ playlist.id }}/',  // Replace with the actual playlist ID
+                type: 'POST',
+                data: {
+                    'track_id': trackId,
+                    'csrfmiddlewaretoken': '{{ csrf_token }}'
+                },
+                success: function(response) {
+                    // Update the playlist in the frontend
+                    alert('Song added to playlist successfully!');
+                },
+                error: function(xhr, status, error) {
+                    alert('An error occurred while adding the song to the playlist.');
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+    });
+</script>
+
+
+</body>
+</html>

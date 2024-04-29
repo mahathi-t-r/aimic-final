@@ -1,0 +1,196 @@
+<!DOCTYPE HTML>
+{% load static %}
+<html>
+<head>
+    <title>Anuv Jain</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <noscript><link rel="stylesheet" href="{% static 'noscript.css' %}" /></noscript>
+
+    <style>
+        /* Banner CSS */
+        body.is-preload #banner .logo {
+            -moz-transform: none;
+            -webkit-transform: none;
+            -ms-transform: none;
+            transform: none;
+            opacity: 1;
+        }
+
+        body.is-preload #banner h2 {
+            opacity: 1;
+            -moz-transform: none;
+            -webkit-transform: none;
+            -ms-transform: none;
+            transform: none;
+            -moz-filter: none;
+            -webkit-filter: none;
+            -ms-filter: none;
+            filter: none;
+        }
+
+        body.is-preload #banner p {
+            opacity: 1;
+            -moz-transform: none;
+            -webkit-transform: none;
+            -ms-transform: none;
+            transform: none;
+            -moz-filter: none;
+            -webkit-filter: none;
+            -ms-filter: none;
+            filter: none;
+        }
+
+        /* Navigation CSS */
+        #menu {
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3em;
+            background: rgba(255, 255, 255, 0.975);
+            z-index: 1000;
+            text-align: center;
+        }
+
+        #menu .inner {
+            display: inline-block;
+            padding: 0 1em;
+            line-height: 3em;
+        }
+
+        #menu ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: inline-block;
+        }
+
+        #menu ul li {
+            display: inline-block;
+            margin-right: 1em;
+        }
+
+        #menu ul li a {
+            text-decoration: none;
+            color: #000;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
+        }
+
+        #menu ul li a:hover {
+            color: #cc0000;
+        }
+    </style>
+
+</head>
+<body class="is-preload">
+
+<!-- Navigation -->
+<nav id="menu">
+    <div class="inner">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/aboutus">About Us</a></li>
+            <li><a href="/search_tracks">Search</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Page Wrapper -->
+<div id="page-wrapper">
+
+    <!-- Header -->
+    <header id="header" class="alt">
+        <h1><a href="index.html">Aimic</a></h1>
+        <nav>
+            <a href="#menu">Menu</a>
+        </nav>
+    </header>
+
+    <!-- Banner -->
+    <section id="banner">
+        <div class="inner">
+            <h2>Anuv Jain</h2>
+            <p>Anuv Jain is a talented singer-songwriter known for his soulful music and meaningful lyrics.</p>
+        </div>
+    </section>
+
+    <!-- Wrapper -->
+    <section id="wrapper">
+
+        <!-- One -->
+        <section id="one" class="wrapper spotlight style1">
+            <div class="inner">
+                <a href="#" class="image"><img src="https://t2.genius.com/unsafe/425x425/https%3A%2F%2Fimages.genius.com%2F90c97ac6e4964237bcf038e2053f6b96.1000x1000x1.png" alt="" /></a>
+                <div class="content">
+                    <h2 class="major">Husn</h2>
+                    <p>"Husn" is a mesmerizing track by Anuv Jain, renowned for its captivating melody and poignant lyrics. Anuv Jain's soulful voice effortlessly weaves through the intricate emotions portrayed in the song, offering listeners a profound musical experience. "Husn" explores themes of beauty, love, and longing, drawing the audience into a world of heartfelt expressions and evocative melodies. With its rich acoustic arrangements and heartfelt vocals, "Husn" stands as a testament to Anuv Jain's prowess as a singer-songwriter, leaving a lasting impact on all who listen.</p>
+                    <!-- Audio player -->
+                    <audio controls>
+                        <source src="{% static 'Husn.mp3' %}" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+            </div>
+        </section>
+
+        <!-- Add more sections for other songs -->
+                <!-- Two -->
+        <section id="two" class="wrapper alt spotlight style2">
+            <div class="inner">
+                <a href="#" class="image"><img src="https://c.saavncdn.com/879/Alag-Aasmaan-Unknown-2020-20200716212927-500x500.jpg" alt="" /></a>
+                <div class="content">
+                    <h2 class="major">Alag Aasmaan</h2>
+                    <p>"Alag Aasmaan" is a captivating masterpiece by Anuv Jain, renowned for its ethereal melody and profound lyrics. Anuv Jain's emotive vocals soar through the celestial atmosphere of the song, painting a vivid portrait of dreams, aspirations, and the quest for individuality. "Alag Aasmaan" embodies a sense of liberation and self-discovery, inspiring listeners to reach for the stars and embrace the uniqueness within themselves. With its enchanting composition and heartfelt delivery, "Alag Aasmaan" emerges as a timeless anthem of hope and resilience, resonating deeply with audiences across boundaries and generations.</p>
+                    <audio controls>
+                        <source src="{% static 'aa.mp3' %}" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+            </div>
+        </section>
+
+        <!-- Three -->
+        <section id="three" class="wrapper spotlight style3">
+            <div class="inner">
+                <a href="#" class="image"><img src="https://c.saavncdn.com/520/Baarishein-English-2018-20180522204131-500x500.jpg" alt="" /></a>
+                <div class="content">
+                    <h2 class="major">Baarishein</h2>
+                    <p>"Baarishein" by Anuv Jain is a soul-stirring composition celebrated for its profound melody and poignant narrative. Anuv Jain's tender vocals cascade like raindrops, painting a vivid picture of longing, loss, and the passage of time. "Baarishein" envelops listeners in a cocoon of emotions, inviting them to immerse themselves in the gentle ebb and flow of memories and reflections. Through its evocative lyrics and hauntingly beautiful melody, "Baarishein" captures the essence of human vulnerability and resilience in the face of life's inevitable storms. With its timeless charm and universal appeal, "Baarishein" resonates deeply with listeners, offering solace and catharsis in moments of solitude and introspection.</p>
+                    <audio controls>
+                        <source src="{% static 'Baarishein.mp3' %}" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+            </div>
+        </section>
+
+        <section id="four" class="wrapper alt spotlight style2">
+            <div class="inner">
+                <a href="#" class="image"><img src="https://cdn.wegow.com/media/artists/anuv-jain/anuv-jain-1710149130.9633546.jpg" alt="" /></a>
+                <div class="content">
+                    <h2 class="major">Gul</h2>
+                    <p>"Gul" by Anuv Jain is a captivating melody, renowned for its exquisite beauty and heartfelt sentiment. Anuv Jain's tender vocals delicately weave through the intricate layers of emotions portrayed in the song, evoking a sense of longing, nostalgia, and the fleeting nature of time. "Gul" paints a vivid picture of blooming flowers and the transient beauty of life, offering listeners a poignant reminder to cherish every moment and embrace the beauty that surrounds them. With its enchanting melody and evocative lyrics, "Gul" stands as a timeless ode to the fragility and resilience of the human spirit, resonating deeply with audiences across boundaries and generations.</p>
+                    <audio controls>
+                        <source src="{% static 'Gul.mp3' %}" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- Scripts -->
+    <script src="{% static 'jquery.min.js' %}"></script>
+    <script src="{% static 'jquery.scrollex.min.js' %}"></script>
+    <script src="{% static 'browser.min.js' %}"></script>
+    <script src="{% static 'breakpoints.min.js' %}"></script>
+    <script src="{% static 'util.js' %}"></script>
+    <script src="{% static 'main.js' %}"></script>
+
+</div>
+</body>
+</html>

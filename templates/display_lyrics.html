@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lyrics</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('https://images.unsplash.com/photo-1502582877126-512f3c5b0a64?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            color: #fff;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 50px;
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        h2 {
+            margin-top: 30px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            padding: 20px;
+            margin-top: 20px;
+            margin-bottom: 50px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            font-size: 18px;
+            line-height: 1.6;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lyrics</h1>
+    {% for song, lyrics_content in lyrics.items %}
+        <h2>{{ song }}</h2>
+        <pre>{{ lyrics_content }}</pre>
+    {% endfor %}
+</body>
+</html>

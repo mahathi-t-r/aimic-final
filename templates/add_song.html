@@ -1,0 +1,29 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Song to Playlist</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Add Song to Playlist</h1>
+        <form id="addSongForm" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="songTitle">Song Title:</label>
+                <input type="text" class="form-control" id="songTitle" name="songTitle" required>
+            </div>
+            <div class="form-group">
+                <label for="songArtist">Song Artist:</label>
+                <input type="text" class="form-control" id="songArtist" name="songArtist" required>
+            </div>
+            <input type="hidden" id="playlistId" name="playlistId" value="{{ playlist_id }}">
+            <button type="button" class="btn btn-primary" onclick="addSong()">Add Song</button>
+        </form>
+        <a href="{% url 'playlist_detail' playlist_id=playlist_id %}" class="btn btn-secondary mt-3">Back to Playlist Detail</a>
+    </div>
+
+    <script src="{% static 'add_song.js' %}"></script>
+</body>
+</html>

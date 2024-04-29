@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+{% load static %}
+<html>
+<head>
+    <title>Sid Sriram</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <noscript><link rel="stylesheet" href="{% static 'noscript.css' %}" /></noscript>
+
+    <style>
+        /* Banner CSS */
+        body.is-preload #banner .logo {
+            -moz-transform: none;
+            -webkit-transform: none;
+            -ms-transform: none;
+            transform: none;
+            opacity: 1;
+        }
+
+        body.is-preload #banner h2 {
+            opacity: 1;
+            -moz-transform: none;
+            -webkit-transform: none;
+            -ms-transform: none;
+            transform: none;
+            -moz-filter: none;
+            -webkit-filter: none;
+            -ms-filter: none;
+            filter: none;
+        }
+
+        body.is-preload #banner p {
+            opacity: 1; /* fixed typo here */
+            -moz-transform: none;
+            -webkit-transform: none;
+            -ms-transform: none;
+            transform: none;
+            -moz-filter: none;
+            -webkit-filter: none;
+            -ms-filter: none;
+            filter: none;
+        }
+
+        .profile-image {
+            float: right; /* Float the image to the right */
+            margin-left: 20px; /* Add some space between the image and text */
+        }
+
+        .profile-image img {
+            width: 150px; /* Set the width of the image */
+            height: auto; /* Maintain aspect ratio */
+        }
+    </style>
+</head>
+<body class="is-preload">
+<!-- Navigation -->
+<nav id="menu">
+    <div class="inner">
+        <h2>Menu</h2>
+        <ul class="links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/aboutus">About Us</a></li>
+            <li><a href="/search_tracks">Search</a></li>
+            <li><a href="/login">Log In</a></li>
+            <li><a href="/signup">Sign Up</a></li>
+        </ul>
+        <a href="#" class="close">Close</a>
+    </div>
+</nav>
+
+<!-- Header -->
+<header id="header" class="alt">
+    <h1><a href="index.html">Aimic</a></h1>
+    <nav>
+        <a href="#menu">Menu</a>
+    </nav>
+</header>
+
+<!-- Banner -->
+<section id="banner" class="wrapper">
+    <div class="inner">
+        <h2>SID SRIRAM</h2>
+        <p>Sid Sriram is a versatile Indian-American singer-songwriter known for his soulful voice and captivating performances that blend elements of Indian classical music with contemporary styles.</p>
+    </div>
+</section>
+
+<!-- Wrapper -->
+<section id="wrapper">
+
+    <!-- One -->
+    <section id="one" class="wrapper spotlight style1">
+        <div class="inner">
+            <a href="#" class="image"><img src="https://c.saavncdn.com/211/Kaadhal-En-Kaviye-From-Salmon-3D-Tamil-2021-20220813215206-500x500.jpg" alt="" /></a>
+            <div class="content">
+                <h2 class="major">Kaadhal En Kaviye</h2>
+                <p>Kaadal Yen Kaviye" from the Tamil movie "Kaadhal" is a soul-stirring composition that delves into the depths of love, with Sid Sriram's emotive vocals adding layers of passion and emotion to the song.</p>
+                <!-- Audio player -->
+                <audio controls>
+                    <source src="{% static 'kyk.mp3' %}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+    </section>
+
+    <!-- Two -->
+    <section id="two" class="wrapper alt spotlight style2">
+        <div class="inner">
+            <a href="#" class="image"><img src="https://images.firstpost.com/wp-content/uploads/2018/07/Geetha-Govindam-F.jpg?im=FitAndFill=(596,336)" alt="" /></a>
+            <div class="content">
+                <h2 class="major">Inkem Inkem Inkem Kaavaale</h2>
+                <p>Inkem Inkem Inkem Kaavaale" from the Telugu movie "Geetha Govindam" is a melodious track that resonates with listeners through its catchy tune and heartfelt lyrics, sung with grace by Sid Sriram.</p>
+                <audio controls>
+                    <source src="{% static 'ink.mp3' %}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+    </section>
+
+    <!-- Three -->
+    <section id="three" class="wrapper spotlight style3">
+        <div class="inner">
+            <a href="#" class="image"><img src="https://images.hungama.com/c/1/2db/a3f/4846750/4846750_300x300.jpg" alt="" /></a>
+            <div class="content">
+                <h2 class="major">Adiye</h2>
+                <p>Adiye" from the Tamil movie "Kadal" is a soulful track that captivates listeners with its haunting melody and evocative lyrics. Sung by Sid Sriram, the song beautifully expresses the yearning and emotions of the protagonist, making it a memorable addition to the soundtrack.</p>
+                <audio controls>
+                    <source src="{% static 'Adiye.mp3' %}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+    </section>
+
+    <section id="two" class="wrapper alt spotlight style2">
+        <div class="inner">
+            <a href="#" class="image"><img src="https://static.mirchi.in/thumb/imgsize-31014,msid-101655414,width-800,height-450,resizemode-1/101655414.jpg" alt="" /></a>
+            <div class="content">
+                <h2 class="major">Aaradya</h2>
+                <p>"Aradhya" is a Telugu song from the movie Kushi. It's a powerful and emotive track that reflects the intensity of emotions. Sid Sriram's soulful rendition adds depth and passion to the song, making it a standout piece in the film's soundtrack.</p>
+                <audio controls>
+                    <source src="{% static 'Aradhya.mp3' %}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+    </section>
+</section>
+
+<!-- Scripts -->
+<script src="{% static 'jquery.min.js' %}"></script>
+<script src="{% static 'jquery.scrollex.min.js' %}"></script>
+<script src="{% static 'browser.min.js' %}"></script>
+<script src="{% static 'breakpoints.min.js' %}"></script>
+<script src="{% static 'util.js' %}"></script>
+<script src="{% static 'main.js' %}"></script>
+
+</body>
+</html>

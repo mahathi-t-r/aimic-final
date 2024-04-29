@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Tracks</title>
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata:700" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            background: #222; /* Dark background color */
+            font-family: 'Inconsolata', monospace;
+        }
+
+       .navbar {
+    background-color: #333;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    height: 40px; /* Adjust height as needed */
+    width: auto; /* Adjust width as needed */
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar ul li {
+    display: inline;
+    margin-left: 20px; /* Add margin to separate the list items */
+}
+
+.navbar ul li:first-child {
+    margin-left: 0; /* Remove margin for the first list item */
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 18px;
+}
+        .container {
+            position: absolute;
+            top: 50%; /* Position the container at 50% from the top of the viewport */
+            left: 50%; /* Position the container at 50% from the left of the viewport */
+            transform: translate(-50%, -50%); /* Center the container horizontally and vertically */
+            width: 300px;
+            height: 100px;
+        }
+
+        .container .search {
+            position: absolute;
+            margin: auto;
+            top: 0; /* Adjust as needed */
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 80px;
+            background: #3498db; /* Blue search bar */
+            border-radius: 50%;
+            transition: all 1s;
+            z-index: 4;
+            box-shadow: 0 0 25px 0 #3498db; /* Blue shadow */
+        }
+
+        .container .search:hover {
+            cursor: pointer;
+        }
+
+        .container .search::before {
+            content: "";
+            position: absolute;
+            margin: auto;
+            top: 22px;
+            right: 0;
+            bottom: 0;
+            left: 22px;
+            width: 12px;
+            height: 2px;
+            background: #fff; /* White color */
+            transform: rotate(45deg);
+            transition: all 0.5s;
+        }
+
+        .container .search::after {
+            content: "";
+            position: absolute;
+            margin: auto;
+            top: -5px;
+            right: 0;
+            bottom: 0;
+            left: -5px;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            border: 2px solid #fff; /* White border */
+            transition: all 0.5s;
+        }
+
+        .container input {
+            font-family: 'Inconsolata', monospace;
+            position: absolute;
+            margin: auto;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 50px;
+            outline: none;
+            border: none;
+            background: #3498db; /* Blue search bar */
+            color: #fff; /* White text color */
+            padding: 0 80px 0 20px;
+            border-radius: 30px;
+            box-shadow: 0 0 25px 0 #3498db, 0 20px 25px 0 rgba(0, 0, 0, 0.2); /* Blue shadow */
+            transition: all 1s;
+            opacity: 0;
+            z-index: 5;
+            font-weight: bolder;
+            letter-spacing: 0.1em;
+        }
+
+        .container input:hover {
+            cursor: pointer;
+        }
+
+        .container input:focus {
+            width: 300px;
+            opacity: 1;
+            cursor: text;
+        }
+
+        .container input:focus ~ .search {
+            right: -250px;
+            background: #3498db; /* Blue search bar */
+            z-index: 6;
+        }
+
+        .container input:focus ~ .search::before {
+            top: 0;
+            left: 0;
+            width: 25px;
+        }
+
+        .container input:focus ~ .search::after {
+            top: 0;
+            left: 0;
+            width: 25px;
+            height: 2px;
+            border: none;
+            background: #fff; /* White color */
+            transform: rotate(-45deg);
+        }
+
+        .container input::placeholder {
+            color: #fff; /* White placeholder color */
+            opacity: 0.5;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+           <img src="https://upload.wikimedia.org/wikipedia/commons/0/02/Aimic-Photoroom.png-Photoroom.png" alt="Your Application Logo" style="height: 40px;" class="logo">
+        <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/aboutus">About</a></li>
+            <li><a href="/feedback">Contact</a></li>
+            <li><a href="/upgrade">premium</a></li>
+            <br>
+        </ul>
+            </nav>
+    </div>
+
+    <!-- Your HTML form -->
+    <div class="container">
+        <form action="{% url 'search_tracks' %}" method="GET">
+            <input type="text" name="q" placeholder="Search for tracks">
+            <div class="search"></div>
+        </form>
+    </div>
+</body>
+</html>
